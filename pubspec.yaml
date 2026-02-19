@@ -18,3 +18,8 @@ melos:
   scripts:
     analyze:
       run: melos exec -- flutter analyze
+
+    run_dev:
+      exec: flutter run --flavor development --target lib/main_development.dart
+      packageFilters:
+        scope: vector

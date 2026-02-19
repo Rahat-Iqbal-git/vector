@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Vector (Dev)",
+            "request": "launch",
+            "type": "dart",
+            "cwd": "apps/vector",
+            "program": "lib/main_development.dart",
+            "args": [
+                "--flavor",
+                "development"
+            ]
+        },
+    ]
+}

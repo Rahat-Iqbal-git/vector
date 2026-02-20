@@ -1,6 +1,7 @@
 {
   "roots": [
     "vector",
+    "vector_domain",
     "vector_workspace"
   ],
   "packages": [
@@ -31,6 +32,14 @@
         "mocktail",
         "very_good_analysis"
       ]
+    },
+    {
+      "name": "vector_domain",
+      "version": "0.0.0",
+      "dependencies": [
+        "equatable"
+      ],
+      "devDependencies": []
     },
     {
       "name": "very_good_analysis",
@@ -65,6 +74,14 @@
         "xml",
         "yaml",
         "yaml_edit"
+      ]
+    },
+    {
+      "name": "equatable",
+      "version": "2.0.8",
+      "dependencies": [
+        "collection",
+        "meta"
       ]
     },
     {

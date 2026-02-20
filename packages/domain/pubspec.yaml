@@ -1,0 +1,10 @@
+name: vector_domain
+description: Domain layer for vector. This will contain pure business logic
+publish_to: none
+resolution: workspace
+
+environment:
+  sdk: ^3.10.0
+
+dependencies: 
+  equatable: ^2.0.8

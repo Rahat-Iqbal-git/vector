@@ -1,0 +1,7 @@
+name: core
+description: A core package for the application.
+version: 1.0.0
+resolution: workspace
+
+environment:
+  sdk: ^3.10.0

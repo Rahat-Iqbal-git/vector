@@ -618,6 +618,12 @@
       "rootUri": "../packages/domain",
       "packageUri": "lib/",
       "languageVersion": "3.10"
+    },
+    {
+      "name": "core",
+      "rootUri": "../packages/core",
+      "packageUri": "lib/",
+      "languageVersion": "3.10"
     }
   ],
   "generator": "pub",

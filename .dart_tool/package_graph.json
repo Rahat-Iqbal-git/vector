@@ -1,5 +1,6 @@
 {
   "roots": [
+    "core",
     "vector",
     "vector_domain",
     "vector_workspace"
@@ -39,6 +40,12 @@
       "dependencies": [
         "equatable"
       ],
+      "devDependencies": []
+    },
+    {
+      "name": "core",
+      "version": "1.0.0",
+      "dependencies": [],
       "devDependencies": []
     },
     {

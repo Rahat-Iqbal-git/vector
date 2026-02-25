@@ -111,5 +111,12 @@ app.*.map.json
 !.idea/dictionaries/
 !.idea/runConfigurations/
 
-# Generated l10n files
-lib/l10n/gen/
+# # Generated l10n files
+# lib/l10n/gen/
+
+#
+.dart_tool/
+build/
+.idea/
+.vscode/
+*.iml

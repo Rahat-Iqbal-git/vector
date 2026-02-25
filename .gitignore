@@ -113,3 +113,10 @@ app.*.map.json
 
 # Generated l10n files
 lib/l10n/gen/
+
+#
+.dart_tool/
+build/
+.idea/
+.vscode/
+*.iml

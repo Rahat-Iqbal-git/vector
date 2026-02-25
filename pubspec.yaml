@@ -25,3 +25,7 @@ melos:
       exec: flutter run --flavor development --target lib/main_development.dart
       packageFilters:
         scope: vector
+
+    format-check:
+      run: melos exec -- "dart format . --set-exit-if-changed"
+      description: Ensure all code follows standard indentation.

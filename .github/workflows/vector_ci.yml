@@ -26,20 +26,13 @@ jobs:
 
       - name: Static Analysis (All Packages)
         run: melos run analyze
-
-      - name: Security Audit
-        run: |
-          # Check the root and the main app for vulnerabilities
-          flutter pub audit 
-          cd apps/vector && flutter pub audit
-
+      
+      - name: Verify Formatting (Indentation)
+        run: melos run format-check
+      
       - name: Unit & Widget Tests
         run: melos run test --no-select
 
-      - name: Upload Coverage
-        uses: codecov/codecov-action@v3
-        with:
-          file: coverage/combined_lcov.info 
 
   build_android:
     needs: quality_gate

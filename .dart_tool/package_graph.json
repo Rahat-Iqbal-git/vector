@@ -2,6 +2,7 @@
   "roots": [
     "core",
     "vector",
+    "vector_data",
     "vector_domain",
     "vector_workspace"
   ],
@@ -49,6 +50,21 @@
       "devDependencies": []
     },
     {
+      "name": "vector_data",
+      "version": "0.0.0",
+      "dependencies": [
+        "core",
+        "dio",
+        "fpdart",
+        "injectable",
+        "vector_domain"
+      ],
+      "devDependencies": [
+        "injectable_generator",
+        "very_good_analysis"
+      ]
+    },
+    {
       "name": "very_good_analysis",
       "version": "10.2.0",
       "dependencies": []
@@ -81,6 +97,19 @@
         "xml",
         "yaml",
         "yaml_edit"
+      ]
+    },
+    {
+      "name": "fpdart",
+      "version": "1.2.0",
+      "dependencies": []
+    },
+    {
+      "name": "injectable",
+      "version": "2.7.1+4",
+      "dependencies": [
+        "get_it",
+        "meta"
       ]
     },
     {
@@ -954,6 +983,118 @@
         "async",
         "path"
       ]
+    },
+    {
+      "name": "dio",
+      "version": "5.9.2",
+      "dependencies": [
+        "async",
+        "collection",
+        "dio_web_adapter",
+        "http_parser",
+        "meta",
+        "mime",
+        "path"
+      ]
+    },
+    {
+      "name": "dio_web_adapter",
+      "version": "2.1.2",
+      "dependencies": [
+        "dio",
+        "http_parser",
+        "meta",
+        "web"
+      ]
+    },
+    {
+      "name": "get_it",
+      "version": "9.2.1",
+      "dependencies": [
+        "async",
+        "collection",
+        "meta"
+      ]
+    },
+    {
+      "name": "injectable_generator",
+      "version": "2.9.1",
+      "dependencies": [
+        "analyzer",
+        "build",
+        "code_builder",
+        "collection",
+        "dart_style",
+        "glob",
+        "injectable",
+        "meta",
+        "path",
+        "recase",
+        "source_gen"
+      ]
+    },
+    {
+      "name": "recase",
+      "version": "4.1.0",
+      "dependencies": []
+    },
+    {
+      "name": "code_builder",
+      "version": "4.11.1",
+      "dependencies": [
+        "built_collection",
+        "built_value",
+        "collection",
+        "matcher",
+        "meta"
+      ]
+    },
+    {
+      "name": "built_collection",
+      "version": "5.1.1",
+      "dependencies": []
+    },
+    {
+      "name": "build",
+      "version": "4.0.4",
+      "dependencies": [
+        "analyzer",
+        "crypto",
+        "glob",
+        "logging",
+        "package_config",
+        "path"
+      ]
+    },
+    {
+      "name": "source_gen",
+      "version": "4.2.0",
+      "dependencies": [
+        "analyzer",
+        "async",
+        "build",
+        "dart_style",
+        "glob",
+        "path",
+        "pub_semver",
+        "source_span",
+        "yaml"
+      ]
+    },
+    {
+      "name": "built_value",
+      "version": "8.12.4",
+      "dependencies": [
+        "built_collection",
+        "collection",
+        "fixnum",
+        "meta"
+      ]
+    },
+    {
+      "name": "fixnum",
+      "version": "1.1.1",
+      "dependencies": []
     }
   ],
   "configVersion": 1

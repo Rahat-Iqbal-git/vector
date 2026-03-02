@@ -68,6 +68,24 @@
       "languageVersion": "3.1"
     },
     {
+      "name": "build",
+      "rootUri": "file:///home/rahat-iqbal/.pub-cache/hosted/pub.dev/build-4.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
+      "name": "built_collection",
+      "rootUri": "file:///home/rahat-iqbal/.pub-cache/hosted/pub.dev/built_collection-5.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "built_value",
+      "rootUri": "file:///home/rahat-iqbal/.pub-cache/hosted/pub.dev/built_value-8.12.4",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "characters",
       "rootUri": "file:///home/rahat-iqbal/.pub-cache/hosted/pub.dev/characters-1.4.1",
       "packageUri": "lib/",
@@ -108,6 +126,12 @@
       "rootUri": "file:///home/rahat-iqbal/.pub-cache/hosted/pub.dev/clock-1.1.2",
       "packageUri": "lib/",
       "languageVersion": "3.4"
+    },
+    {
+      "name": "code_builder",
+      "rootUri": "file:///home/rahat-iqbal/.pub-cache/hosted/pub.dev/code_builder-4.11.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
     },
     {
       "name": "collection",
@@ -152,6 +176,18 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "dio",
+      "rootUri": "file:///home/rahat-iqbal/.pub-cache/hosted/pub.dev/dio-5.9.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "dio_web_adapter",
+      "rootUri": "file:///home/rahat-iqbal/.pub-cache/hosted/pub.dev/dio_web_adapter-2.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
       "name": "equatable",
       "rootUri": "file:///home/rahat-iqbal/.pub-cache/hosted/pub.dev/equatable-2.0.8",
       "packageUri": "lib/",
@@ -174,6 +210,12 @@
       "rootUri": "file:///home/rahat-iqbal/.pub-cache/hosted/pub.dev/file-7.0.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "fixnum",
+      "rootUri": "file:///home/rahat-iqbal/.pub-cache/hosted/pub.dev/fixnum-1.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
     },
     {
       "name": "flutter",
@@ -200,8 +242,20 @@
       "languageVersion": "3.9"
     },
     {
+      "name": "fpdart",
+      "rootUri": "file:///home/rahat-iqbal/.pub-cache/hosted/pub.dev/fpdart-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "frontend_server_client",
       "rootUri": "file:///home/rahat-iqbal/.pub-cache/hosted/pub.dev/frontend_server_client-4.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "get_it",
+      "rootUri": "file:///home/rahat-iqbal/.pub-cache/hosted/pub.dev/get_it-9.2.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -234,6 +288,18 @@
       "rootUri": "file:///home/rahat-iqbal/.pub-cache/hosted/pub.dev/http_parser-4.1.2",
       "packageUri": "lib/",
       "languageVersion": "3.4"
+    },
+    {
+      "name": "injectable",
+      "rootUri": "file:///home/rahat-iqbal/.pub-cache/hosted/pub.dev/injectable-2.7.1+4",
+      "packageUri": "lib/",
+      "languageVersion": "3.8"
+    },
+    {
+      "name": "injectable_generator",
+      "rootUri": "file:///home/rahat-iqbal/.pub-cache/hosted/pub.dev/injectable_generator-2.9.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.8"
     },
     {
       "name": "intl",
@@ -434,6 +500,12 @@
       "languageVersion": "3.6"
     },
     {
+      "name": "recase",
+      "rootUri": "file:///home/rahat-iqbal/.pub-cache/hosted/pub.dev/recase-4.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "shelf",
       "rootUri": "file:///home/rahat-iqbal/.pub-cache/hosted/pub.dev/shelf-1.4.2",
       "packageUri": "lib/",
@@ -462,6 +534,12 @@
       "rootUri": "file:///home/rahat-iqbal/fvm/versions/stable/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
       "languageVersion": "3.9"
+    },
+    {
+      "name": "source_gen",
+      "rootUri": "file:///home/rahat-iqbal/.pub-cache/hosted/pub.dev/source_gen-4.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
     },
     {
       "name": "source_map_stack_trace",
@@ -622,6 +700,12 @@
     {
       "name": "core",
       "rootUri": "../packages/core",
+      "packageUri": "lib/",
+      "languageVersion": "3.10"
+    },
+    {
+      "name": "vector_data",
+      "rootUri": "../packages/data",
       "packageUri": "lib/",
       "languageVersion": "3.10"
     }

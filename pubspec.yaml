@@ -8,6 +8,7 @@ workspace:
   - apps/vector
   - packages/domain
   - packages/core
+  - packages/data
 
 dev_dependencies:
   melos: ^7.3.0

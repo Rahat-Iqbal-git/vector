@@ -1,13 +1,13 @@
 import 'package:equatable/equatable.dart';
 
-class CryptoSummaryEntity extends Equatable {
+class GlobalCryptoDataEntity extends Equatable {
   final int activeCryptocurrencies;
   final int upcomingIcos;
   final int ongoingIcos;
   final int endedIcos;
   final int markets;
 
-  const CryptoSummaryEntity({
+  const GlobalCryptoDataEntity({
     required this.activeCryptocurrencies,
     required this.upcomingIcos,
     required this.ongoingIcos,

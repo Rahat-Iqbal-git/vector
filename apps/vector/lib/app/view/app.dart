@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:vector/counter/counter.dart';
 import 'package:vector/crypto/view/crypto_list_view.dart';
 import 'package:vector/l10n/l10n.dart';
 

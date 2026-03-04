@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class CryptoListView extends StatelessWidget {
@@ -14,9 +17,7 @@ class CryptoListView extends StatelessWidget {
         children: [
           const SizedBox(height: 16),
           ElevatedButton(
-            onPressed: () {
-              //
-            },
+            onPressed: getGlobalData,
             child: const Text('Get Data'),
           ),
           ListView.builder(
@@ -34,5 +35,28 @@ class CryptoListView extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<void> getGlobalData() async {
+    final Dio _dio = Dio(
+      BaseOptions(
+        baseUrl: 'https://api.coingecko.com/api/v3',
+        headers: {
+          'x-cg-demo-api-key': 'CG-uGEzPEEYpUWU5gz4STYYwDP4',
+        },
+      ),
+    );
+    try {
+      final response = await _dio.get('/global');
+
+      if (response.statusCode == 200) {
+        // return response.data;
+        log(response.data.toString());
+      } else {
+        throw Exception('Failed to fetch data');
+      }
+    } on DioException catch (e) {
+      throw Exception('Dio error: ${e.message}');
+    }
   }
 }

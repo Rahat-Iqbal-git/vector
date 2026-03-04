@@ -11,11 +11,16 @@ environment:
 
 dependencies:
   bloc: ^9.2.0
+  core:
+    path: ../../packages/core
+  dio: ^5.9.0
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
   flutter_localizations:
     sdk: flutter
+  get_it: ^9.1.1
+  injectable: ^2.7.0
   intl: ^0.20.2
 
 dev_dependencies:

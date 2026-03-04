@@ -7,4 +7,11 @@ environment:
   sdk: ^3.10.0
 
 dependencies: 
+  core:
+    path: ../../packages/core
   equatable: ^2.0.8
+  fpdart: ^1.2.0
+  injectable: ^2.7.1+4
+
+dev_dependencies:
+  injectable_generator: ^2.12.1

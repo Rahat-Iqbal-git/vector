@@ -1,7 +1,7 @@
 import 'package:core/vector_core.dart';
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:vector_data/src/dio_exception.dart';
+import 'package:vector_data/src/network/dio_exception.dart';
 
 abstract class BaseDioClient {
   final Dio _dio;

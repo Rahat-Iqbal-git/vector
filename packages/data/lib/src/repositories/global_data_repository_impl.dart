@@ -1,9 +1,11 @@
 import 'package:core/src/failure/failure.dart';
 import 'package:fpdart/src/either.dart';
+import 'package:injectable/injectable.dart';
 import 'package:vector_data/src/data_source/global_data_data_source/global_data_data_source.dart';
 import 'package:vector_domain/src/entites/global_crypto_data_entity.dart';
 import 'package:vector_domain/vector_domain.dart';
 
+@LazySingleton(as:GlobalCryptoDataRepository)
 class GlobalDataRepositoryImpl implements GlobalCryptoDataRepository {
   final GlobalDataDataSource _dataSource;
 
@@ -13,7 +15,7 @@ class GlobalDataRepositoryImpl implements GlobalCryptoDataRepository {
   @override
   Future<Either<Failure, GlobalCryptoDataEntity>> getGlobalCryptoData() async {
     final response = await _dataSource.getGlobalData();
-    
+
     return response.map((dataResponse) {
       final globalDataResponse = dataResponse.data;
       return GlobalCryptoDataEntity(

@@ -7,11 +7,11 @@ environment:
   sdk: ^3.10.0
 
 dependencies:
-  vector_domain:
-    path: ../domain
   core:
     path: ../core
   dio: ^5.9.2
+  vector_domain:
+    path: ../../packages/domain
   freezed_annotation: ^3.1.0
   injectable: ^2.7.1+4
   json_annotation: ^4.11.0

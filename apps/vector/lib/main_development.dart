@@ -5,5 +5,5 @@ import 'package:vector/config/environment.dart';
 
 Future<void> main() async {
   final envConfig = EnvironmentFactory.create(Environment.development);
-  await bootstrap(() => const App());
+  await bootstrap(() => const App(), envConfig);
 }

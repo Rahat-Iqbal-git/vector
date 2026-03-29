@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:core/vector_core.dart';
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
@@ -28,6 +30,7 @@ abstract class BaseDioClient {
       // Ensure we have data; if null, you might want a specific failure
       return Right(response.data as T);
     } on DioException catch (e) {
+      log(e.toString(), name: "DioException");
       return Left(
         ApiFailure(
           message: DioExceptions.fromDioError(e).message,

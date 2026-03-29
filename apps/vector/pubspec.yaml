@@ -14,6 +14,10 @@ dependencies:
   core:
     path: ../../packages/core
   dio: ^5.9.0
+  vector_data:
+    path: ../../packages/data
+  vector_domain:
+    path: ../../packages/domain
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1

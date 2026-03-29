@@ -22,13 +22,15 @@ class AppBlocObserver extends BlocObserver {
   }
 }
 
-Future<void> bootstrap(FutureOr<Widget> Function() builder, EnvironmentConfig envConfig) async {
+Future<void> bootstrap(
+  FutureOr<Widget> Function() builder,
+  EnvironmentConfig envConfig,
+) async {
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
 
   Bloc.observer = const AppBlocObserver();
-
 
   // Add cross-flavor configuration here
   await configureDependencies(envConfig);

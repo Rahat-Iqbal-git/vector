@@ -38,7 +38,7 @@ class CryptoListView extends StatelessWidget {
   }
 
   Future<void> getGlobalData() async {
-    final Dio _dio = Dio(
+    final dio = Dio(
       BaseOptions(
         baseUrl: 'https://api.coingecko.com/api/v3',
         headers: {
@@ -47,7 +47,7 @@ class CryptoListView extends StatelessWidget {
       ),
     );
     try {
-      final response = await _dio.get('/global');
+      final response = await dio.get<Map<String, dynamic>>('/global');
 
       if (response.statusCode == 200) {
         // return response.data;

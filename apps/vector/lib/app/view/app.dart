@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vector/crypto/view/crypto_list_view.dart';
+// import 'package:vector/crypto/view/crypto_list_view.dart';
+import 'package:vector/crypto/view/global_crypto_data.dart';
 import 'package:vector/l10n/l10n.dart';
 
 class App extends StatelessWidget {
@@ -16,7 +17,7 @@ class App extends StatelessWidget {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const CryptoListView(),
+      home: const GlobalCryptoDataPage(),
     );
   }
 }

@@ -6,6 +6,7 @@ class GlobalCryptoDataEntity extends Equatable {
   final int ongoingIcos;
   final int endedIcos;
   final int markets;
+  final Map<String, double>? total_market_cap;
 
   const GlobalCryptoDataEntity({
     required this.activeCryptocurrencies,
@@ -13,6 +14,7 @@ class GlobalCryptoDataEntity extends Equatable {
     required this.ongoingIcos,
     required this.endedIcos,
     required this.markets,
+    this.total_market_cap,
   });
 
   @override
@@ -22,5 +24,6 @@ class GlobalCryptoDataEntity extends Equatable {
     ongoingIcos,
     endedIcos,
     markets,
+    total_market_cap,
   ];
 }

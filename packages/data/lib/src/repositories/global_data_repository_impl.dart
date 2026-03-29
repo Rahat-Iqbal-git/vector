@@ -24,6 +24,7 @@ class GlobalDataRepositoryImpl implements GlobalCryptoDataRepository {
         ongoingIcos: globalDataResponse?.ongoingIcos ?? 0,
         endedIcos: globalDataResponse?.endedIcos ?? 0,
         markets: globalDataResponse?.markets ?? 0,
+        total_market_cap: globalDataResponse?.totalMarketCap ?? {},
       );
     });
   }

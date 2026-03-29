@@ -9,7 +9,7 @@ import 'package:vector_data/src/network/coingecko_interceptor.dart';
 class CoingeckoApiClient extends BaseDioClient {
   CoingeckoApiClient(Dio dio, EnvironmentConfig config) : super(dio, config) {
     dio.options.baseUrl = config.baseUrl;
-    // Specific interceptor only for this API
-    dio.interceptors.add(CoinGeckoInterceptor()); 
+    //
+    dio.interceptors.add(CoinGeckoInterceptor(apiKey: config.coingeckoApiKey)); 
   }
 }

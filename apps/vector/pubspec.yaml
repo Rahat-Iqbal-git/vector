@@ -11,21 +11,32 @@ environment:
 
 dependencies:
   bloc: ^9.2.0
+  core:
+    path: ../../packages/core
+  dio: ^5.9.0
+  vector_data:
+    path: ../../packages/data
+  vector_domain:
+    path: ../../packages/domain
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
   flutter_localizations:
     sdk: flutter
+  get_it: ^9.1.1
+  injectable: ^2.7.0
   intl: ^0.20.2
 
 dev_dependencies:
   bloc_lint: ">=0.3.3 <0.3.6"
   bloc_test: ^10.0.0
   bloc_tools: ^0.1.0-dev.20
+  build_runner: ^2.10.5
   flutter_test:
     sdk: flutter
   mocktail: ^1.0.4
   very_good_analysis: ^10.1.0
+  injectable_generator: ^2.12.1
 
 flutter:
   generate: true

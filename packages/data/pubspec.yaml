@@ -1,0 +1,25 @@
+name: vector_data
+description: Data package for vector
+publish_to: none
+resolution: workspace
+
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  core:
+    path: ../core
+  dio: ^5.9.2
+  vector_domain:
+    path: ../../packages/domain
+  freezed_annotation: ^3.1.0
+  injectable: ^2.7.1+4
+  json_annotation: ^4.11.0
+  fpdart: ^1.2.0
+
+dev_dependencies:
+  build_runner: ^2.12.2
+  freezed: ^3.2.5
+  very_good_analysis: ^10.0.0
+  injectable_generator:
+  json_serializable: ^6.13.0

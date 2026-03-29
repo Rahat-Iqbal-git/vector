@@ -29,13 +29,14 @@ class GlobalCryptoDataView extends StatelessWidget {
       body: Column(
         children: [
           Text(
-            'Global Crypto Data: ${context.watch<CryptoDataCubit>().state.total_market_cap?['btc']}',
+            '''Global Crypto Data: '''
+            '''${context.watch<CryptoDataCubit>().state.total_market_cap?['btc']}''',
             style: const TextStyle(fontSize: 18),
           ),
           Center(
             child: ElevatedButton(
-              onPressed: () {
-                context.read<CryptoDataCubit>().fetchGlobalCryptoData();
+              onPressed: () async {
+                await context.read<CryptoDataCubit>().fetchGlobalCryptoData();
               },
               child: const Text('Fetch Global Crypto Data'),
             ),

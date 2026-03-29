@@ -16,8 +16,8 @@ final GetIt getIt = GetIt.instance;
 // )
 
 @InjectableInit(
-  initializerName: 'init',
-  asExtension: true,
+  // initializerName: 'init',
+  // asExtension: true,
   // includeMicroPackages: true,
   externalPackageModulesBefore: [
     ExternalModule(VectorDomainPackageModule),
@@ -26,5 +26,5 @@ final GetIt getIt = GetIt.instance;
 )
 Future<void> configureDependencies(EnvironmentConfig envConfig) async {
   getIt.registerSingleton<EnvironmentConfig>(envConfig);
-  getIt.init();
+  await getIt.init();
 }

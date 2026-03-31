@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vector/core/app_theme/extenstions/app_text_extenstion.dart';
 import 'package:vector/crypto/cubit/crypto_data_cubit.dart';
 import 'package:vector/di/injection.dart';
 
@@ -22,6 +23,7 @@ class GlobalCryptoDataView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appText = Theme.of(context).extension<AppTextExtenstion>();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Global Crypto Data'),
@@ -31,7 +33,7 @@ class GlobalCryptoDataView extends StatelessWidget {
           Text(
             '''Global Crypto Data: '''
             '''${context.watch<CryptoDataCubit>().state.total_market_cap?['btc']}''',
-            style: const TextStyle(fontSize: 18),
+            style: appText?.heading1,
           ),
           Center(
             child: ElevatedButton(

@@ -22,19 +22,19 @@ class AppTheme {
   static AppTextExtenstion _createTextExtension(AppColorExtension colors) {
     return AppTextExtenstion(
       heading1: TextStyle(
-        fontFamily: AppTypography.fontFamily,
+        // fontFamily: AppTypography.primaryFont,
         fontSize: AppTypography.size24,
         fontWeight: AppTypography.bold,
         color: colors.surface,
       ),
       body: TextStyle(
-        fontFamily: AppTypography.fontFamily,
+        // fontFamily: AppTypography.primaryFont,
         fontSize: AppTypography.size16,
         fontWeight: AppTypography.regular,
         color: colors.surface,
       ),
       title: TextStyle(
-        fontFamily: AppTypography.fontFamily,
+        // fontFamily: AppTypography.primaryFont,
         fontSize: AppTypography.size16,
         fontWeight: AppTypography.bold,
         color: colors.surface,

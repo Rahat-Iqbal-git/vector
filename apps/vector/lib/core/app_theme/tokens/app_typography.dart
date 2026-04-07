@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 abstract class AppTypography {
-  static const String fontFamily = 'Inter';
+  static const String? primaryFont = null;
 
   static const FontWeight regular = FontWeight.w400;
   static const FontWeight medium = FontWeight.w500;

@@ -1,5 +1,5 @@
 name: vector
-description: Professional Crypto Price Tracker
+description: A Crypto Price Tracker
 version: 1.0.0+1
 publish_to: none
 resolution: workspace
@@ -32,6 +32,7 @@ dev_dependencies:
   bloc_test: ^10.0.0
   bloc_tools: ^0.1.0-dev.20
   build_runner: ^2.10.5
+  flutter_launcher_icons: ^0.14.4
   flutter_test:
     sdk: flutter
   mocktail: ^1.0.4
@@ -41,3 +42,12 @@ dev_dependencies:
 flutter:
   generate: true
   uses-material-design: true
+
+flutter_launcher_icons:
+  ios: false
+  image_path_ios: "assets/images/vector_app_icon.png"
+  
+  android: "launcher_icon"
+  image_path_android: "assets/images/vector_app_icon.png"
+  adaptive_icon_background: "#000000"
+  adaptive_icon_foreground: "assets/images/vector_app_icon_transparent.png"

@@ -26,13 +26,10 @@ class GlobalCryptoDataView extends StatelessWidget {
     'btc',
     'eth',
     'bnb',
-    'usdt',
-    'ada',
     'xrp',
     'sol',
     'dot',
-    'doge',
-    'shib',
+    'sol'
   ];
 
   @override
@@ -112,6 +109,7 @@ class GlobalCryptoDataView extends StatelessWidget {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
               ),
+              const SizedBox(height: 50)
             ],
           );
         },

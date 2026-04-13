@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vector/core/app_theme/theme/app_theme.dart';
-import 'package:vector/crypto/view/global_crypto_data.dart';
+import 'package:vector/crypto/view/global_crypto_data_page.dart';
 import 'package:vector/l10n/l10n.dart';
 
 class App extends StatelessWidget {

@@ -18,5 +18,12 @@ class CryptoCoinEntity extends Equatable {
   });
 
   @override
-  List<Object?> get props => [name, price, symbol, icon, marketCap, marketCapPercentage];
+  List<Object?> get props => [
+    name,
+    price,
+    symbol,
+    icon,
+    marketCap,
+    marketCapPercentage,
+  ];
 }

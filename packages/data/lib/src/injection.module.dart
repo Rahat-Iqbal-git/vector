@@ -20,20 +20,26 @@ import 'package:vector_data/src/repositories/global_data_repository_impl.dart'
 import 'package:vector_domain/vector_domain.dart' as _i418;
 
 class VectorDataPackageModule extends _i526.MicroPackageModule {
-// initializes the registration of main-scope dependencies inside of GetIt
+  // initializes the registration of main-scope dependencies inside of GetIt
   @override
   _i687.FutureOr<void> init(_i526.GetItHelper gh) {
     final registerModule = _$RegisterModule();
     gh.lazySingleton<_i361.Dio>(() => registerModule.dio);
-    gh.lazySingleton<_i144.CoingeckoApiClient>(() => _i144.CoingeckoApiClient(
-          gh<_i361.Dio>(),
-          gh<_i1038.EnvironmentConfig>(),
-        ));
-    gh.lazySingleton<_i253.GlobalDataDataSource>(() =>
-        _i334.RemoteGlobalDataDataSourceImpl(gh<_i144.CoingeckoApiClient>()));
-    gh.lazySingleton<_i418.GlobalCryptoDataRepository>(() =>
-        _i533.GlobalDataRepositoryImpl(
-            dataSource: gh<_i253.GlobalDataDataSource>()));
+    gh.lazySingleton<_i144.CoingeckoApiClient>(
+      () => _i144.CoingeckoApiClient(
+        gh<_i361.Dio>(),
+        gh<_i1038.EnvironmentConfig>(),
+      ),
+    );
+    gh.lazySingleton<_i253.GlobalDataDataSource>(
+      () =>
+          _i334.RemoteGlobalDataDataSourceImpl(gh<_i144.CoingeckoApiClient>()),
+    );
+    gh.lazySingleton<_i418.GlobalCryptoDataRepository>(
+      () => _i533.GlobalDataRepositoryImpl(
+        dataSource: gh<_i253.GlobalDataDataSource>(),
+      ),
+    );
   }
 }
 

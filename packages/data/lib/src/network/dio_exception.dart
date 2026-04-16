@@ -31,12 +31,18 @@ class DioExceptions implements Exception {
 
   String _handleError(int? statusCode, dynamic error) {
     switch (statusCode) {
-      case 400: return 'Bad request';
-      case 401: return 'Unauthorized';
-      case 403: return 'Forbidden';
-      case 404: return error['message'] ?? 'Not found';
-      case 500: return 'Internal server error';
-      default: return 'Oops something went wrong';
+      case 400:
+        return 'Bad request';
+      case 401:
+        return 'Unauthorized';
+      case 403:
+        return 'Forbidden';
+      case 404:
+        return error['message'] ?? 'Not found';
+      case 500:
+        return 'Internal server error';
+      default:
+        return 'Oops something went wrong';
     }
   }
 }

@@ -5,7 +5,7 @@ import 'package:vector_data/src/data_source/global_data_data_source/global_data_
 import 'package:vector_data/src/network/coingecko_api_client.dart';
 import 'package:vector_data/src/response_models/data/global_data_response.dart';
 
-@LazySingleton(as:  GlobalDataDataSource)
+@LazySingleton(as: GlobalDataDataSource)
 class RemoteGlobalDataDataSourceImpl implements GlobalDataDataSource {
   final CoingeckoApiClient _apiClient;
 
@@ -19,5 +19,4 @@ class RemoteGlobalDataDataSourceImpl implements GlobalDataDataSource {
       return GlobalDataResponse.fromJson(json);
     });
   }
-
 }

@@ -18,7 +18,11 @@ abstract class BaseDioClient {
       // Add LogInterceptor only in debug mode
       ..interceptors.addAll([
         if (_config.enableLogging)
-          LogInterceptor(requestHeader: true, requestBody: true, responseBody: true),
+          LogInterceptor(
+            requestHeader: true,
+            requestBody: true,
+            responseBody: true,
+          ),
       ]);
   }
 

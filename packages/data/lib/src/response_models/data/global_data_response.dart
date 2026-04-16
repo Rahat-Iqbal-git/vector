@@ -5,11 +5,10 @@ part 'global_data_response.g.dart';
 
 @freezed
 abstract class GlobalDataResponse with _$GlobalDataResponse {
-  const factory GlobalDataResponse({
-    CryptoData? data,
-  }) = _$GlobalDataResponseImpl;
+  const factory GlobalDataResponse({CryptoData? data}) =
+      _$GlobalDataResponseImpl;
 
-  factory GlobalDataResponse.fromJson(Map<String, dynamic> json) => 
+  factory GlobalDataResponse.fromJson(Map<String, dynamic> json) =>
       _$GlobalDataResponseFromJson(json);
 }
 
@@ -29,6 +28,6 @@ abstract class CryptoData with _$CryptoData {
     int? updatedAt,
   }) = _$CryptoDataImpl;
 
-  factory CryptoData.fromJson(Map<String, dynamic> json) => 
+  factory CryptoData.fromJson(Map<String, dynamic> json) =>
       _$CryptoDataFromJson(json);
 }

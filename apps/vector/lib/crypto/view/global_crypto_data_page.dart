@@ -29,7 +29,7 @@ class GlobalCryptoDataView extends StatelessWidget {
     'xrp',
     'sol',
     'dot',
-    'sol'
+    'sol',
   ];
 
   @override
@@ -109,7 +109,7 @@ class GlobalCryptoDataView extends StatelessWidget {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
               ),
-              const SizedBox(height: 50)
+              const SizedBox(height: 50),
             ],
           );
         },

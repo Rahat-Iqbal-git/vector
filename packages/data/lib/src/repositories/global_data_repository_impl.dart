@@ -4,7 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:vector_data/src/data_source/global_data_data_source/global_data_data_source.dart';
 import 'package:vector_domain/vector_domain.dart';
 
-@LazySingleton(as:GlobalCryptoDataRepository)
+@LazySingleton(as: GlobalCryptoDataRepository)
 class GlobalDataRepositoryImpl implements GlobalCryptoDataRepository {
   final GlobalDataDataSource _dataSource;
 

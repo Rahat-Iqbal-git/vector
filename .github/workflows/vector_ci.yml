@@ -57,3 +57,39 @@ jobs:
         with:
           name: vector-android-release
           path: apps/vector/build/app/outputs/flutter-apk/app-release.apk
+
+
+  create_release:
+    name: Create GitHub Release
+    needs: build_android
+    if: startsWith(github.ref, 'refs/tags/v') 
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Extract App Version
+        id: extract_version
+        run: |
+          VERSION=$(grep '^version: ' apps/vector/pubspec.yaml | cut -d ' ' -f 2 | tr -d '\r')
+          echo "app_version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Download APK Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: vector-android-release
+
+      - name: Publish Draft Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }} 
+          name: Vector Release ${{ github.ref_name }}
+          draft: true
+          prerelease: false
+          generate_release_notes: true
+          files: app-release.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -50,13 +50,18 @@ jobs:
       - name: Build Vector Release APK
         run: |
           cd apps/vector
-          flutter build apk --release --tree-shake-icons
+          flutter build apk --release \
+            --flavor production \
+            --target lib/main_production.dart \
+            --dart-define="BASE_URL=https://api.coingecko.com/api/v3" \
+            --dart-define="ENABLE_LOGGING=false" \
+            --tree-shake-icons
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: vector-android-release
-          path: apps/vector/build/app/outputs/flutter-apk/app-release.apk
+          path: apps/vector/build/app/outputs/flutter-apk/development/release/app-prod-release.apk
 
 
   create_release:

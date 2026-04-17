@@ -1,7 +1,14 @@
 
 
 
-# > **Vector**
+<!-- # > **Vector** -->
+ <p align="center" style="font-size: 35px; font-weight: bold;">
+  Vector
+</p>
+<p align="center">
+  <img src="assets/images/vector_app_icon.png" width="200"/>
+</p>
+<h1 align="center"></h1>
 
 The purpose of this project is to showcase production grade, senior-level Flutter engineering.
 
@@ -15,6 +22,9 @@ Vector is a highly scalable Flutter project. It follows **Clean Architecture**, 
      ─ CI/CD with Github
      ─ Unit testing
        
+##  Screenshot
+<p align="center">
+  <img src="assets/images/vector_app_screenshot.png" width="200"/>
 
 ## 🛡 Clean Architecture
 

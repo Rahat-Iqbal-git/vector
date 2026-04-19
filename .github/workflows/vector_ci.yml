@@ -3,6 +3,8 @@ name: Vector CI/CD
 on:
   push:
     branches: [ main, develop ]
+    tags:
+      - 'v*'
   pull_request:
     branches: [ main ]
 
@@ -37,6 +39,8 @@ jobs:
   build_android:
     needs: quality_gate
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
@@ -47,7 +51,7 @@ jobs:
       - name: Bootstrap
         run: melos bootstrap
 
-      - name: Build Vector Release APK
+      - name: Build Vector Release(Production) APK
         run: |
           cd apps/vector
           flutter build apk --release \

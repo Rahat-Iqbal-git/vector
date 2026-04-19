@@ -65,7 +65,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: vector-android-release
-          path: apps/vector/build/app/outputs/flutter-apk/development/release/app-prod-release.apk
+          path: apps/vector/build/app/outputs/flutter-apk/production/release/app-prod-release.apk
 
 
   create_release:
@@ -99,6 +99,6 @@ jobs:
           draft: true
           prerelease: false
           generate_release_notes: true
-          files: app-release.apk
+          files: app-production-release.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -65,7 +65,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: vector-android-release
-          path: apps/vector/build/app/outputs/flutter-apk/production/release/app-prod-release.apk
+          path: apps/vector/build/app/outputs/flutter-apk/app-production-release.apk
+          if-no-files-found: error
 
 
   create_release:

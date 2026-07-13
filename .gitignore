@@ -83,6 +83,10 @@ unlinked_spec.ds
 **/ios/ServiceDefinitions.json
 **/ios/Runner/GeneratedPluginRegistrant.*
 
+# Env / secrets (dart-define-from-file). Keep *.example.json committed.
+**/env/*.json
+!**/env/*.example.json
+
 # Coverage
 coverage/
 
@@ -118,5 +122,4 @@ app.*.map.json
 .dart_tool/
 build/
 .idea/
-.vscode/
 *.iml

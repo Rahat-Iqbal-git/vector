@@ -1,3 +1,4 @@
+import 'package:core/vector_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vector/core/app_theme/extenstions/app_text_extenstion.dart';
@@ -39,79 +40,101 @@ class GlobalCryptoDataView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Vector'),
       ),
-      body: BlocBuilder<CryptoDataCubit, GlobalCryptoDataEntity>(
+      body: BlocBuilder<CryptoDataCubit, AsyncState<GlobalCryptoDataEntity>>(
         builder: (context, state) {
-          return ListView(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            children: [
-              Row(
+          switch (state) {
+            case AsyncInitial() || AsyncLoading():
+              return const Center(child: CircularProgressIndicator());
+            case AsyncFailure(:final message):
+              return Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(message),
+                    const SizedBox(height: 14),
+                    ElevatedButton(
+                      onPressed: () {
+                        context.read<CryptoDataCubit>().fetchGlobalCryptoData();
+                      },
+                      child: const Text('Retry'),
+                    ),
+                  ],
+                ),
+              );
+            case AsyncSuccess(:final data):
+              return ListView(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 children: [
-                  Expanded(
-                    child: DashboardCard(
-                      value: state.ongoingIcos,
-                      subtitle: 'Ongoing',
-                      icon: Icons.trending_up,
-                    ),
-                  ),
-                  const SizedBox(width: 14),
-                  Expanded(
-                    child: DashboardCard(
-                      value: state.endedIcos,
-                      subtitle: 'Ended',
-                      icon: Icons.check_circle,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 14),
-              Row(
-                children: [
-                  Expanded(
-                    child: DashboardCard(
-                      value: state.markets,
-                      subtitle: 'Markets',
-                      icon: Icons.currency_bitcoin,
-                    ),
-                  ),
-                  const SizedBox(width: 14),
-                  Expanded(
-                    child: DashboardCard(
-                      value: state.upcomingIcos,
-                      subtitle: 'Upcoming',
-                      icon: Icons.light,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 24),
-              Text('Market Caps', style: appText?.title),
-              const SizedBox(height: 14),
-              ListView.separated(
-                itemBuilder: (context, index) {
-                  final coin = _showCoins[index];
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey[900],
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: ListTile(
-                      title: Text(
-                        coin.toUpperCase(),
-                        style: appText?.title,
+                  Row(
+                    children: [
+                      Expanded(
+                        child: DashboardCard(
+                          value: data.ongoingIcos,
+                          subtitle: 'Ongoing',
+                          icon: Icons.trending_up,
+                        ),
                       ),
-                      subtitle: Text('\$${state.total_market_cap?[coin]}'),
-                      leading: const Icon(Icons.currency_bitcoin),
-                    ),
-                  );
-                },
-                separatorBuilder: (context, index) => const SizedBox(height: 8),
-                itemCount: _showCoins.length,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-              ),
-              const SizedBox(height: 50),
-            ],
-          );
+                      const SizedBox(width: 14),
+                      Expanded(
+                        child: DashboardCard(
+                          value: data.endedIcos,
+                          subtitle: 'Ended',
+                          icon: Icons.check_circle,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 14),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: DashboardCard(
+                          value: data.markets,
+                          subtitle: 'Markets',
+                          icon: Icons.currency_bitcoin,
+                        ),
+                      ),
+                      const SizedBox(width: 14),
+                      Expanded(
+                        child: DashboardCard(
+                          value: data.upcomingIcos,
+                          subtitle: 'Upcoming',
+                          icon: Icons.light,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 24),
+                  Text('Market Caps', style: appText?.title),
+                  const SizedBox(height: 14),
+                  ListView.separated(
+                    itemBuilder: (context, index) {
+                      final coin = _showCoins[index];
+                      return Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey[900],
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: ListTile(
+                          title: Text(
+                            coin.toUpperCase(),
+                            style: appText?.title,
+                          ),
+                          subtitle: Text('\$${data.total_market_cap?[coin]}'),
+                          leading: const Icon(Icons.currency_bitcoin),
+                        ),
+                      );
+                    },
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 8),
+                    itemCount: _showCoins.length,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                  ),
+                  const SizedBox(height: 50),
+                ],
+              );
+          }
         },
       ),
     );

@@ -51,14 +51,24 @@ jobs:
       - name: Bootstrap
         run: melos bootstrap
 
+      - name: Generate production env file
+        run: |
+          cd apps/vector
+          cat > env/prod.json <<EOF
+          {
+            "BASE_URL": "https://api.coingecko.com/api/v3",
+            "COINGECKO_API_KEY": "${{ secrets.COINGECKO_API_KEY }}",
+            "ENABLE_LOGGING": false
+          }
+          EOF
+
       - name: Build Vector Release(Production) APK
         run: |
           cd apps/vector
           flutter build apk --release \
             --flavor production \
             --target lib/main_production.dart \
-            --dart-define="BASE_URL=https://api.coingecko.com/api/v3" \
-            --dart-define="ENABLE_LOGGING=false" \
+            --dart-define-from-file=env/prod.json \
             --tree-shake-icons
 
       - name: Upload Artifact

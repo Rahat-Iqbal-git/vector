@@ -1,0 +1,152 @@
+BESPOKE SEALED STATE APPROACH (Pattern 1, hand-written per feature)
+=====================================================================
+
+WHAT IT IS
+----------
+A feature-specific sealed class hierarchy for the cubit's state, instead of
+the generic AsyncState<T> from packages/core. Same compiler guarantees
+(impossible states unconstructible, exhaustive switch), but the payload type
+is hardcoded and the states are named after the feature. The feature owns its
+shape and can evolve it independently (e.g. add a Refreshing state later)
+without touching any other feature.
+
+WHEN TO USE
+-----------
+- Default for simple fetches: generic AsyncState<T> (already in core) — zero cost.
+- Graduate a feature to a bespoke sealed class (this file) when it needs states
+  the generic can't name: Refreshing(oldData), LoadingMore for pagination,
+  partial success, etc.
+- Use flat status-enum + copyWith (Pattern 2) instead when data must survive
+  transitions everywhere (search-as-you-type, pull-to-refresh over a list).
+
+RULE: one state hierarchy per independent data lifecycle, not per API or per page.
+
+
+1. STATE FILE — lives next to the cubit
+   apps/vector/lib/crypto/cubit/crypto_data_state.dart
+--------------------------------------------------------
+
+import 'package:vector_domain/vector_domain.dart';
+
+sealed class CryptoDataState {
+  const CryptoDataState();
+}
+
+final class CryptoDataInitial extends CryptoDataState {
+  const CryptoDataInitial();
+}
+
+final class CryptoDataLoading extends CryptoDataState {
+  const CryptoDataLoading();
+}
+
+final class CryptoDataLoaded extends CryptoDataState {
+  const CryptoDataLoaded(this.data);
+
+  final GlobalCryptoDataEntity data;
+}
+
+final class CryptoDataError extends CryptoDataState {
+  const CryptoDataError(this.message);
+
+  final String message;
+}
+
+
+2. CUBIT
+   apps/vector/lib/crypto/cubit/crypto_data_cubit.dart
+--------------------------------------------------------
+
+import 'package:bloc/bloc.dart';
+import 'package:injectable/injectable.dart';
+import 'package:vector/crypto/cubit/crypto_data_state.dart';
+import 'package:vector_domain/vector_domain.dart';
+
+@injectable
+class CryptoDataCubit extends Cubit<CryptoDataState> {
+  CryptoDataCubit(this._useCase) : super(const CryptoDataInitial());
+
+  final GetGlobalCryptoDataUseCase _useCase;
+
+  Future<void> fetchGlobalCryptoData() async {
+    emit(const CryptoDataLoading());
+
+    final result = await _useCase.call();
+    result.fold(
+      (failure) => emit(CryptoDataError(failure.message)),
+      (data) => emit(CryptoDataLoaded(data)),
+    );
+  }
+}
+
+Key points:
+- Initial state is CryptoDataInitial, not an all-zeros entity.
+- The Either's Left branch EMITS a state (CryptoDataError) — never log-and-ignore.
+- failure.message comes from the sealed Failure class in packages/core.
+
+
+3. VIEW — exhaustive pattern match
+   apps/vector/lib/crypto/view/global_crypto_data_page.dart
+--------------------------------------------------------
+
+BlocBuilder<CryptoDataCubit, CryptoDataState>(
+  builder: (context, state) {
+    switch (state) {
+      case CryptoDataInitial() || CryptoDataLoading():
+        return const Center(child: CircularProgressIndicator());
+
+      case CryptoDataError(:final message):
+        return Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(message),
+              const SizedBox(height: 14),
+              ElevatedButton(
+                onPressed: () =>
+                    context.read<CryptoDataCubit>().fetchGlobalCryptoData(),
+                child: const Text('Retry'),
+              ),
+            ],
+          ),
+        );
+
+      case CryptoDataLoaded(:final data):
+        return /* dashboard ListView reading from `data` */;
+    }
+  },
+)
+
+Key points:
+- No default case: the switch is exhaustive over the sealed type, so adding a
+  new state subclass becomes a compile error at every unhandled switch.
+- `data` is destructured non-nullable — no `state.data!` assertions.
+- `message` is required by construction — no `?? 'Something went wrong'` fallback.
+
+
+WHY THIS SHAPE (recap)
+----------------------
+- The state type is a specification of every situation the feature can be in.
+  Loading/success/failure are mutually exclusive ALTERNATIVES → sum type
+  (sealed class), not booleans (booleans multiply into 2^n combos, most illegal).
+- Either<Failure, T> guarantees the failure is acknowledged; the state type is
+  what makes it visible on screen. Both are needed to close the loop:
+  API error -> Left(Failure) -> fold -> CryptoDataError -> error UI + Retry.
+- Success data is only reachable inside the Loaded arm; the compiler enforces
+  "check the situation before reading the data".
+
+GROWING THE FEATURE LATER (examples)
+------------------------------------
+Add refresh-over-existing-data:
+  final class CryptoDataRefreshing extends CryptoDataState {
+    const CryptoDataRefreshing(this.previousData);
+    final GlobalCryptoDataEntity previousData;
+  }
+The compiler will then flag every switch that doesn't handle it yet.
+
+MULTI-SECTION PAGES (e.g. turf details with 5 APIs)
+---------------------------------------------------
+Don't write 5 hierarchies or merge 5 lifecycles into one status. Either:
+  a) one small cubit per section (each Cubit<AsyncState<T>> or bespoke), or
+  b) one cubit whose single state class holds one AsyncState<T> FIELD per section.
+Each independent data source keeps its own independent lifecycle.

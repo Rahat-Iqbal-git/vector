@@ -1,0 +1,68 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "vector (development)",
+            "cwd": "apps/vector",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_development.dart",
+            "args": ["--flavor", "development", "--dart-define-from-file=env/dev.json"]
+        },
+        {
+            "name": "vector (staging)",
+            "cwd": "apps/vector",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_staging.dart",
+            "args": ["--flavor", "staging", "--dart-define-from-file=env/staging.json"]
+        },
+        {
+            "name": "vector (production)",
+            "cwd": "apps/vector",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_production.dart",
+            "args": ["--flavor", "production", "--dart-define-from-file=env/prod.json"]
+        },
+        {
+            "name": "vector (development, profile mode)",
+            "cwd": "apps/vector",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_development.dart",
+            "args": ["--flavor", "development", "--dart-define-from-file=env/dev.json"],
+            "flutterMode": "profile"
+        },
+        {
+            "name": "vector (production, release mode)",
+            "cwd": "apps/vector",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_production.dart",
+            "args": ["--flavor", "production", "--dart-define-from-file=env/prod.json"],
+            "flutterMode": "release"
+        },
+        {
+            "name": "core",
+            "cwd": "packages/core",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "data",
+            "cwd": "packages/data",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "domain",
+            "cwd": "packages/domain",
+            "request": "launch",
+            "type": "dart"
+        }
+    ]
+}

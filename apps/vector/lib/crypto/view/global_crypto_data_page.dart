@@ -45,12 +45,12 @@ class GlobalCryptoDataView extends StatelessWidget {
           switch (state) {
             case AsyncInitial() || AsyncLoading():
               return const Center(child: CircularProgressIndicator());
-            case AsyncFailure(:final message):
+            case AsyncFailure(:final failure):
               return Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(message),
+                    Text(failure.message),
                     const SizedBox(height: 14),
                     ElevatedButton(
                       onPressed: () {

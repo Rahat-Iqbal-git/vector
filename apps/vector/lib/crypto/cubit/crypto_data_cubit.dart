@@ -14,10 +14,8 @@ class CryptoDataCubit extends Cubit<AsyncState<GlobalCryptoDataEntity>> {
 
     final result = await _useCase.call();
     result.fold(
-      (failure) => emit(AsyncFailure(failure.message)),
+      (failure) => emit(AsyncFailure(failure)),
       (data) => emit(AsyncSuccess(data)),
     );
   }
-
-  //
 }

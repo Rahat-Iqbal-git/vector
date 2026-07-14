@@ -1,3 +1,5 @@
+import '../failure/failure.dart';
+
 sealed class AsyncState<T> {
   const AsyncState();
 }
@@ -17,7 +19,7 @@ final class AsyncSuccess<T> extends AsyncState<T> {
 }
 
 final class AsyncFailure<T> extends AsyncState<T> {
-  const AsyncFailure(this.message);
+  const AsyncFailure(this.failure);
 
-  final String message;
+  final Failure failure;
 }

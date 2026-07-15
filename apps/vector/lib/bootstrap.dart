@@ -30,6 +30,13 @@ Future<void> bootstrap(
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
 
+  if (envConfig.coingeckoApiKey.isEmpty) {
+    throw StateError(
+      'COINGECKO_API_KEY is empty for environment ${envConfig.environment}. '
+      'Pass it via --dart-define or --dart-define-from-file at build time.',
+    );
+  }
+
   Bloc.observer = const AppBlocObserver();
 
   // Add cross-flavor configuration here

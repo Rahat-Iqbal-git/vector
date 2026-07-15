@@ -1,7 +1,7 @@
 import 'package:core/vector_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vector/core/app_theme/extenstions/app_text_extenstion.dart';
+import 'package:vector/core/app_theme/extensions/app_text_extension.dart';
 import 'package:vector/crypto/cubit/crypto_data_cubit.dart';
 import 'package:vector/di/injection.dart';
 import 'package:vector_domain/vector_domain.dart';
@@ -35,7 +35,7 @@ class GlobalCryptoDataView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appText = Theme.of(context).extension<AppTextExtenstion>();
+    final appText = Theme.of(context).extension<AppTextExtension>();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Vector'),
@@ -155,7 +155,7 @@ class DashboardCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appText = Theme.of(context).extension<AppTextExtenstion>();
+    final appText = Theme.of(context).extension<AppTextExtension>();
 
     return Container(
       height: 140,

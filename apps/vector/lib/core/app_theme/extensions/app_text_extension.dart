@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AppTextExtenstion extends ThemeExtension<AppTextExtenstion> {
-  AppTextExtenstion({
+class AppTextExtension extends ThemeExtension<AppTextExtension> {
+  AppTextExtension({
     required this.heading1,
     required this.body,
     required this.title,
@@ -12,12 +12,12 @@ class AppTextExtenstion extends ThemeExtension<AppTextExtenstion> {
   final TextStyle heading1;
 
   @override
-  ThemeExtension<AppTextExtenstion> copyWith({
+  ThemeExtension<AppTextExtension> copyWith({
     TextStyle? body,
     TextStyle? title,
     TextStyle? heading1,
   }) {
-    return AppTextExtenstion(
+    return AppTextExtension(
       body: body ?? this.body,
       title: title ?? this.title,
       heading1: heading1 ?? this.heading1,
@@ -25,12 +25,12 @@ class AppTextExtenstion extends ThemeExtension<AppTextExtenstion> {
   }
 
   @override
-  ThemeExtension<AppTextExtenstion> lerp(
-    covariant ThemeExtension<AppTextExtenstion>? other,
+  ThemeExtension<AppTextExtension> lerp(
+    covariant ThemeExtension<AppTextExtension>? other,
     double t,
   ) {
-    if (other is! AppTextExtenstion) return this;
-    return AppTextExtenstion(
+    if (other is! AppTextExtension) return this;
+    return AppTextExtension(
       heading1: TextStyle.lerp(heading1, other.heading1, t)!,
       body: TextStyle.lerp(body, other.body, t)!,
       title: TextStyle.lerp(title, other.title, t)!,

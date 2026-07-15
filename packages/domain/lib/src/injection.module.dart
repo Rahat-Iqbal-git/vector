@@ -7,7 +7,7 @@
 import 'dart:async' as _i687;
 
 import 'package:injectable/injectable.dart' as _i526;
-import 'package:vector_domain/src/repositories/gloal_crypto_data_repository.dart'
+import 'package:vector_domain/src/repositories/global_crypto_data_repository.dart'
     as _i293;
 import 'package:vector_domain/src/use_cases/get_global_crypto_data_use_case.dart'
     as _i316;

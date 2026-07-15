@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vector/core/app_theme/extenstions/app_color_extension.dart';
-import 'package:vector/core/app_theme/extenstions/app_text_extenstion.dart';
+import 'package:vector/core/app_theme/extensions/app_color_extension.dart';
+import 'package:vector/core/app_theme/extensions/app_text_extension.dart';
 import 'package:vector/core/app_theme/tokens/app_typography.dart';
 import 'package:vector/core/app_theme/tokens/colors/color_palette.dart';
 
@@ -19,8 +19,8 @@ class AppTheme {
     error: ColorPalette.neutral900,
   );
 
-  static AppTextExtenstion _createTextExtension(AppColorExtension colors) {
-    return AppTextExtenstion(
+  static AppTextExtension _createTextExtension(AppColorExtension colors) {
+    return AppTextExtension(
       heading1: TextStyle(
         // fontFamily: AppTypography.primaryFont,
         fontSize: AppTypography.size24,

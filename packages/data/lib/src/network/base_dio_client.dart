@@ -6,9 +6,6 @@ import 'package:fpdart/fpdart.dart';
 import 'package:vector_data/src/network/dio_exception.dart';
 
 abstract class BaseDioClient {
-  final Dio _dio;
-  final EnvironmentConfig _config;
-
   BaseDioClient(this._dio, this._config) {
     _dio
       ..options.baseUrl = _config.baseUrl
@@ -18,13 +15,12 @@ abstract class BaseDioClient {
       // Add LogInterceptor only in debug mode
       ..interceptors.addAll([
         if (_config.enableLogging)
-          LogInterceptor(
-            requestHeader: true,
-            requestBody: true,
-            responseBody: true,
-          ),
+          LogInterceptor(requestBody: true, responseBody: true),
       ]);
   }
+
+  final Dio _dio;
+  final EnvironmentConfig _config;
 
   Future<Either<Failure, T>> _performRequest<T>(
     Future<Response<T>> Function() request,
@@ -34,15 +30,15 @@ abstract class BaseDioClient {
       // Ensure we have data; if null, you might want a specific failure
       return Right(response.data as T);
     } on DioException catch (e) {
-      log(e.toString(), name: "DioException");
+      log(e.toString(), name: 'DioException');
       return Left(
         ApiFailure(
           message: DioExceptions.fromDioError(e).message,
           statusCode: e.response?.statusCode,
         ),
       );
-    } catch (e) {
-      return Left(ApiFailure(message: "Unexpected error: $e"));
+    } on Object catch (e) {
+      return Left(ApiFailure(message: 'Unexpected error: $e'));
     }
   }
 

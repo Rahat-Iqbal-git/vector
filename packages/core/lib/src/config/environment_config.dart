@@ -1,4 +1,4 @@
-import 'environment.dart';
+import 'package:core/src/config/environment.dart';
 
 abstract class EnvironmentConfig {
   Environment get environment;

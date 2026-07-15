@@ -120,7 +120,7 @@ class GlobalCryptoDataView extends StatelessWidget {
                             coin.toUpperCase(),
                             style: appText?.title,
                           ),
-                          subtitle: Text('\$${data.total_market_cap?[coin]}'),
+                          subtitle: Text('\$${data.totalMarketCap?[coin]}'),
                           leading: const Icon(Icons.currency_bitcoin),
                         ),
                       );

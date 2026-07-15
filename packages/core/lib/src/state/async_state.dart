@@ -1,4 +1,4 @@
-import '../failure/failure.dart';
+import 'package:core/src/failure/failure.dart';
 
 sealed class AsyncState<T> {
   const AsyncState();

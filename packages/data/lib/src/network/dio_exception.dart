@@ -1,33 +1,31 @@
 import 'package:dio/dio.dart';
 
 class DioExceptions implements Exception {
-  late String message;
 
   DioExceptions.fromDioError(DioException dioError) {
     switch (dioError.type) {
       case DioExceptionType.cancel:
-        message = "Request to API server was cancelled";
-        break;
+        message = 'Request to API server was cancelled';
       case DioExceptionType.connectionTimeout:
-        message = "Connection timeout with API server";
-        break;
+        message = 'Connection timeout with API server';
       case DioExceptionType.receiveTimeout:
-        message = "Receive timeout in connection with API server";
-        break;
+        message = 'Receive timeout in connection with API server';
       case DioExceptionType.badResponse:
         message = _handleError(
           dioError.response?.statusCode,
           dioError.response?.data,
         );
-        break;
       case DioExceptionType.sendTimeout:
-        message = "Send timeout in connection with API server";
-        break;
-      default:
-        message = "Something went wrong";
-        break;
+        message = 'Send timeout in connection with API server';
+      case DioExceptionType.badCertificate:
+        message = 'Bad certificate with API server';
+      case DioExceptionType.connectionError:
+        message = 'Connection error with API server';
+      case DioExceptionType.unknown:
+        message = 'Something went wrong';
     }
   }
+  late String message;
 
   String _handleError(int? statusCode, dynamic error) {
     switch (statusCode) {
@@ -38,7 +36,10 @@ class DioExceptions implements Exception {
       case 403:
         return 'Forbidden';
       case 404:
-        return error['message'] ?? 'Not found';
+        if (error is Map<String, dynamic> && error['message'] is String) {
+          return error['message'] as String;
+        }
+        return 'Not found';
       case 500:
         return 'Internal server error';
       default:

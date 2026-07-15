@@ -30,7 +30,6 @@ class GlobalCryptoDataView extends StatelessWidget {
     'xrp',
     'sol',
     'dot',
-    'sol',
   ];
 
   @override
@@ -110,6 +109,7 @@ class GlobalCryptoDataView extends StatelessWidget {
                   ListView.separated(
                     itemBuilder: (context, index) {
                       final coin = _showCoins[index];
+                      final marketCap = data.totalMarketCap?[coin];
                       return Container(
                         decoration: BoxDecoration(
                           color: Colors.grey[900],
@@ -120,7 +120,9 @@ class GlobalCryptoDataView extends StatelessWidget {
                             coin.toUpperCase(),
                             style: appText?.title,
                           ),
-                          subtitle: Text('\$${data.totalMarketCap?[coin]}'),
+                          subtitle: Text(
+                            marketCap != null ? '\$$marketCap' : 'N/A',
+                          ),
                           leading: const Icon(Icons.currency_bitcoin),
                         ),
                       );
